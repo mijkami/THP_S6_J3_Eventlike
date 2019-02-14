@@ -8,7 +8,9 @@ $ bundle install
 
 $ rails db:create
 
-$ rails db:migrate
+$ rails db:environment:set RAILS_ENV=development
+
+$ rails db:schema:load
 
 $ rails db:seed
 
