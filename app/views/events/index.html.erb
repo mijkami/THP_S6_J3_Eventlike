@@ -1,0 +1,33 @@
+<div class="jumbotron">
+<% if user_signed_in?%>
+  <h1 class="display-3 mb-5">Bienvenue</h1>
+  <% if current_user.first_name == nil || current_user.last_name == nil ||  current_user.description == nil %>
+    <p><%= link_to "Mets à jour ton profil !!!", user_path(current_user.id), class: "btn-info btn p-1" %></p>
+  <% else %>
+    <h1 class="display-3 mb-5">Bienvenue, <%= current_user.first_name %></h1>
+    <p><%= link_to "Créer un nouvelle EVENT", new_event_path, class: "btn-info btn p-1" %></p>
+  <% end %>
+<% else %>
+  <h2>Bienvenue, connecte-toi !!</h2>
+<% end %>
+</div>
+
+<div class="mt-4">
+  <% @all_events.each_with_index do |event, i| %>
+    <div class="card mb-3" style="width: auto">
+      <div class="card-body">
+        <h5 class="card-title text-info"><%= event.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Event n°<%= i+1 %></h6>
+        <p class="card-text"><%= event.description %></p>
+        <%= link_to "En savoir plus >>", event_path(event.id), class: "btn btn-info p-1" %>
+      </div>
+      <div class="card-footer text-muted">
+        Date : 
+        <%= event.start_date.strftime("%m/%d/%y") %>,
+        <%= event.start_date.strftime("%kh%M") %></br>
+        Lieu :
+        <%= event.location %>
+      </div>
+    </div>
+  <% end %>
+</div>

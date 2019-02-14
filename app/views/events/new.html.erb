@@ -1,0 +1,35 @@
+<% if @event.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p>Event creation process failed due to:</p>
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+  <h6 class=text-info>Titre</h6>
+  <%= text_field_tag 'title', '', class: 'form-control', placeholder: 'Ex: Fête de Pâques'%>
+  <p class="small">Doit être compris entre 5 et 140 caractères.</p></br>
+  <h6 class=text-info>Prix</h6>
+  <%= text_field_tag 'price', '', class: 'form-control', placeholder: 'Ex: 15'%>
+  <p class="small">Doit être un chiffre entier positif.</p></br>
+  <h6 class=text-info>Lieu</h6>
+  <%= text_field_tag 'location', '', class: 'form-control', placeholder: 'Ex: La Félicita'%></br>
+  <h6 class=text-info>Date</h6>
+  <%= text_field_tag 'day', '', class: 'form-control', placeholder: 'Ex: 26/03/2019'%>
+  </br>
+  <h6 class=text-info>Horaire</h6>
+  <%= text_field_tag 'hour', '', class: 'form-control', placeholder: 'Ex: 18:30'%></br>
+  <h6 class=text-info>Durée</h6>
+  <%= text_field_tag 'duration', '', class: 'form-control', placeholder: 'Ex: 120 (pour 2h)'%>
+  <p class="small">Uniquement tranches horaires de 5 minutes comptabilisées (5min, 20min, 145min...)</p></br>
+  <h6 class=text-info>Description</h6>
+  <%= text_area_tag 'description', '', class: 'form-control', placeholder: 'Ex: Venez chasser les oeufs à la Félicita le dernier week-end de mars'%>
+  <p class="small">Doit être compris entre 20 et 1000 caractères.</p></br>
+
+  <%= submit_tag "Créer l'Event", class: "btn btn-info" %></br>
+<% end %>
+<p></p>
