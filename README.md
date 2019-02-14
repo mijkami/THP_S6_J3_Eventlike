@@ -4,6 +4,9 @@
 ## How to setup :
 
 ~~~~~~~~~~~~~~~~~
+
+- add your own sendgrid API in a .env file in root folder
+
 $ bundle install
 
 $ rails db:create
@@ -35,6 +38,7 @@ $ Rails.application.eager_load!
 $ ActiveRecord::Base.descendants
 
 ~~~~~~~~~~~~~~~~~
+
 
 
 ![](https://media1.tenor.com/images/f99ad6444483da12b58a2a81be281358/tenor.gif)
