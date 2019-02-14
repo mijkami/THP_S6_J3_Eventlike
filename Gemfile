@@ -15,6 +15,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
